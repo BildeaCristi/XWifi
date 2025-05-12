@@ -1,0 +1,14 @@
+// Apply this file to force consistent Kotlin settings across all modules
+subprojects {
+    // Skip the app module which already has its own configuration
+    if (project.name != "app") {
+        // Apply only to Android plugin projects
+        plugins.withId("org.jetbrains.kotlin.android") {
+            tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+                kotlinOptions {
+                    jvmTarget = "17"
+                }
+            }
+        }
+    }
+} 
